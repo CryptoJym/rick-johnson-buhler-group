@@ -1,0 +1,10 @@
+.DS_Store
+
+# Keep the public Pages repo focused on reviewable web artifacts.
+/AGENTS.md
+/artifacts/
+/research/
+/research-tracker.md
+/buhler-group-deep-research.md
+/buhler-group-lead-brief.md
+

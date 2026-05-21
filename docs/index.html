@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Buhler Group AI Search Visibility Snapshot | New Reward</title>
+    <meta
+      name="description"
+      content="A New Reward review page showing the Buhler Group Gamma snapshot, supporting research, production search scan data, conclusions, and source basis."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta property="og:title" content="Buhler Group AI Search Visibility Snapshot" />
+    <meta
+      property="og:description"
+      content="Initial findings, source basis, production scan data, and recommendation prepared by New Reward."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      body {
+        min-height: 100vh;
+      }
+
+      .snapshot-shell {
+        min-height: 100vh;
+        background:
+          linear-gradient(180deg, rgba(251, 250, 247, 0.98), rgba(243, 239, 230, 0.98)),
+          repeating-linear-gradient(90deg, rgba(14, 17, 18, 0.025) 0 1px, transparent 1px 72px);
+      }
+
+      .snapshot-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        min-height: 76px;
+        padding: 14px clamp(18px, 4vw, 52px);
+        border-bottom: 1px solid rgba(14, 17, 18, 0.1);
+        background: rgba(251, 250, 247, 0.92);
+        backdrop-filter: blur(18px);
+      }
+
+      .snapshot-header img {
+        display: block;
+        width: min(220px, 42vw);
+        height: auto;
+      }
+
+      .snapshot-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .snapshot-actions a,
+      .small-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 9px 14px;
+        border: 1px solid rgba(14, 17, 18, 0.16);
+        border-radius: 999px;
+        color: var(--ink-soft);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .snapshot-actions a:hover,
+      .snapshot-actions a:focus-visible,
+      .small-action:hover,
+      .small-action:focus-visible {
+        border-color: rgba(201, 163, 102, 0.62);
+        background: rgba(201, 163, 102, 0.12);
+        outline: none;
+      }
+
+      .snapshot-intro,
+      .section-shell-tight {
+        width: min(1180px, calc(100% - 36px));
+        margin: 0 auto;
+      }
+
+      .snapshot-intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+        gap: clamp(24px, 5vw, 64px);
+        align-items: end;
+        padding: clamp(36px, 6vw, 72px) 0 24px;
+      }
+
+      .snapshot-intro h1 {
+        max-width: 940px;
+        margin-bottom: 18px;
+        color: var(--ink);
+        font-family: var(--font-display);
+        font-size: clamp(2.55rem, 6.4vw, 6.5rem);
+        font-weight: 600;
+        line-height: 0.96;
+      }
+
+      .snapshot-intro p {
+        max-width: 790px;
+        color: var(--muted);
+        font-size: clamp(1rem, 1.7vw, 1.22rem);
+      }
+
+      .snapshot-note,
+      .evidence-card,
+      .metric-card,
+      .source-card,
+      .callout,
+      .conclusion-card {
+        border: 1px solid rgba(14, 17, 18, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.68);
+        box-shadow: var(--shadow-tight);
+      }
+
+      .snapshot-note {
+        padding: 20px;
+      }
+
+      .snapshot-note p {
+        margin: 0;
+        font-size: 0.92rem;
+      }
+
+      .status-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        padding: 6px 10px;
+        border: 1px solid rgba(14, 17, 18, 0.12);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--ink-soft);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .status-pill.gold {
+        border-color: rgba(201, 163, 102, 0.5);
+        background: rgba(201, 163, 102, 0.14);
+      }
+
+      .status-pill.cyan {
+        border-color: rgba(55, 214, 255, 0.45);
+        background: rgba(55, 214, 255, 0.11);
+      }
+
+      .embed-frame-wrap {
+        width: min(1280px, calc(100% - 36px));
+        margin: 0 auto;
+        padding: 0 0 clamp(36px, 6vw, 72px);
+      }
+
+      .embed-frame {
+        overflow: hidden;
+        border: 1px solid rgba(14, 17, 18, 0.16);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .embed-frame iframe {
+        display: block;
+        width: 100%;
+        height: min(78vh, 820px);
+        min-height: 620px;
+        border: 0;
+        background: var(--paper);
+      }
+
+      .fallback-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 16px;
+        border-top: 1px solid rgba(14, 17, 18, 0.1);
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .fallback-bar a {
+        color: var(--ink);
+        font-weight: 800;
+      }
+
+      .evidence-section {
+        padding: clamp(46px, 7vw, 88px) 0;
+        border-top: 1px solid rgba(14, 17, 18, 0.08);
+      }
+
+      .evidence-section.dark {
+        background:
+          linear-gradient(135deg, rgba(16, 26, 43, 0.98), rgba(14, 17, 18, 0.98)),
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        color: var(--white);
+      }
+
+      .evidence-section.dark p,
+      .evidence-section.dark li {
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .section-heading-tight {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.58fr);
+        gap: clamp(24px, 5vw, 60px);
+        align-items: end;
+        margin-bottom: 28px;
+      }
+
+      .section-heading-tight h2 {
+        margin-bottom: 0;
+      }
+
+      .section-heading-tight p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .evidence-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .evidence-card,
+      .source-card,
+      .conclusion-card {
+        padding: 20px;
+      }
+
+      .evidence-card h3,
+      .source-card h3,
+      .conclusion-card h3 {
+        margin-bottom: 10px;
+      }
+
+      .evidence-card p,
+      .source-card p,
+      .conclusion-card p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin: 28px 0;
+      }
+
+      .metric-card {
+        padding: 18px;
+      }
+
+      .metric-value {
+        display: block;
+        margin-bottom: 6px;
+        font-family: var(--font-display);
+        font-size: clamp(2.2rem, 4vw, 4rem);
+        line-height: 0.95;
+      }
+
+      .metric-label {
+        display: block;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        margin: 18px 0 28px;
+        border: 1px solid rgba(14, 17, 18, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.74);
+        box-shadow: var(--shadow-tight);
+      }
+
+      .report-table {
+        width: 100%;
+        min-width: 860px;
+        border-collapse: collapse;
+      }
+
+      .report-table th,
+      .report-table td {
+        padding: 13px 14px;
+        border-bottom: 1px solid rgba(14, 17, 18, 0.09);
+        text-align: left;
+        vertical-align: top;
+        font-size: 0.9rem;
+      }
+
+      .report-table th {
+        color: var(--ink);
+        font-size: 0.74rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .report-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .rank {
+        white-space: nowrap;
+        font-weight: 900;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .link-list,
+      .tight-list {
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .link-list a {
+        color: var(--ink);
+        font-weight: 800;
+      }
+
+      .callout {
+        margin-top: 24px;
+        padding: 22px;
+        border-left: 6px solid var(--gold);
+      }
+
+      .callout h3 {
+        margin-bottom: 8px;
+      }
+
+      .callout p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .source-grid,
+      .conclusion-grid,
+      .workstream-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .workstream-card {
+        position: relative;
+        padding: 22px 22px 22px 58px;
+        border: 1px solid rgba(14, 17, 18, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: var(--shadow-tight);
+      }
+
+      .workstream-number {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        background: var(--night);
+        color: var(--white);
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .workstream-card h3 {
+        margin-bottom: 8px;
+      }
+
+      .workstream-card p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .deck-basis {
+        display: grid;
+        grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      .footer-note {
+        padding: 28px clamp(18px, 4vw, 52px) 46px;
+        color: var(--muted);
+        font-size: 0.86rem;
+        text-align: center;
+      }
+
+      @media (max-width: 980px) {
+        .section-heading-tight,
+        .snapshot-intro,
+        .deck-basis {
+          grid-template-columns: 1fr;
+        }
+
+        .evidence-grid,
+        .metric-grid,
+        .source-grid,
+        .conclusion-grid,
+        .workstream-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .snapshot-header {
+          position: static;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .snapshot-actions {
+          justify-content: flex-start;
+        }
+
+        .embed-frame iframe {
+          height: 72vh;
+          min-height: 520px;
+        }
+
+        .evidence-grid,
+        .metric-grid,
+        .source-grid,
+        .conclusion-grid,
+        .workstream-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="snapshot-shell">
+      <header class="snapshot-header" aria-label="Snapshot header">
+        <a href="./" aria-label="New Reward proposal home">
+          <img src="./assets/wordmark-dark.svg" alt="New Reward" />
+        </a>
+        <nav class="snapshot-actions" aria-label="Snapshot actions">
+          <a href="#snapshot">Deck</a>
+          <a href="#why">Why</a>
+          <a href="#search-report">Search Report</a>
+          <a href="#integrated-work">Integration</a>
+          <a href="#conclusions">Conclusions</a>
+          <a href="#sources">Sources</a>
+          <a href="https://buhler-group-ai-search-v-5cw1f8g.gamma.site/" target="_blank" rel="noopener">Open Gamma</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="snapshot-intro" aria-labelledby="snapshot-title">
+          <div>
+            <p class="eyebrow">Review packet</p>
+            <h1 id="snapshot-title">Buhler Group AI Search Visibility Snapshot</h1>
+            <p>
+              This page combines the client-facing Gamma deck with the research basis, production search-scan data,
+              conclusions, caveats, and source trail behind the copy.
+            </p>
+            <div class="status-row" aria-label="Packet status">
+              <span class="status-pill gold">Noindex review link</span>
+              <span class="status-pill cyan">Gamma deck embedded</span>
+              <span class="status-pill">Production scan complete</span>
+              <span class="status-pill">Formal score pending</span>
+            </div>
+          </div>
+          <aside class="snapshot-note" aria-label="Review note">
+            <p>
+              This is a validation packet, not a public campaign page. It avoids private lead details and does not
+              claim a formal New Reward score because the formal report export is still pending.
+            </p>
+          </aside>
+        </section>
+
+        <section class="embed-frame-wrap" id="snapshot" aria-label="Embedded Gamma snapshot">
+          <div class="embed-frame">
+            <iframe
+              src="https://buhler-group-ai-search-v-5cw1f8g.gamma.site/"
+              title="Buhler Group AI Search Visibility Snapshot"
+              loading="eager"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <div class="fallback-bar">
+              <span>If the embedded presentation does not load, open the Gamma version directly.</span>
+              <a href="https://buhler-group-ai-search-v-5cw1f8g.gamma.site/" target="_blank" rel="noopener">
+                Open Gamma presentation
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="evidence-section" id="why">
+          <div class="section-shell-tight">
+            <div class="section-heading-tight">
+              <div>
+                <p class="section-label">Why this was written</p>
+                <h2>The deck is a validation-first business case, not a generic SEO pitch.</h2>
+              </div>
+              <p>
+                Rick Johnson surfaced the AI search question. Before recommending outreach, we tested whether Buhler's
+                public story and initial search visibility created a specific New Reward opportunity.
+              </p>
+            </div>
+
+            <div class="evidence-grid">
+              <article class="evidence-card">
+                <h3>Current assumption</h3>
+                <p>
+                  Buhler's relevant story is service-led industrial technology, digital support, lifecycle performance,
+                  regional execution, and current product innovation.
+                </p>
+              </article>
+              <article class="evidence-card">
+                <h3>Why we ask them to verify</h3>
+                <p>
+                  The first call should confirm which categories matter commercially before New Reward expands the scan
+                  into a formal AI visibility baseline.
+                </p>
+              </article>
+              <article class="evidence-card">
+                <h3>Why the copy is cautious</h3>
+                <p>
+                  The production search scan is real, but the formal score/PDF report is not complete. The deck avoids
+                  unsupported score claims and frames the findings as initial.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="evidence-section dark">
+          <div class="section-shell-tight">
+            <div class="section-heading-tight">
+              <div>
+                <p class="section-label">Research basis</p>
+                <h2>What the research established before we wrote the deck.</h2>
+              </div>
+              <p>
+                The copy is grounded in official Buhler sources, accepted Deep Research runs, and a production New
+                Reward search-visibility scan.
+              </p>
+            </div>
+
+            <div class="evidence-grid">
+              <article class="evidence-card">
+                <h3>Company posture</h3>
+                <p>
+                  Private Swiss family-owned industrial technology company; not a distressed story. 2025 showed softer
+                  revenue with stronger profitability, liquidity, and balance-sheet flexibility.
+                </p>
+              </article>
+              <article class="evidence-card">
+                <h3>Strategic theme</h3>
+                <p>
+                  Service, digital support, long-term agreements, uptime, and lifecycle performance are central to the
+                  commercial story that AI systems may flatten.
+                </p>
+              </article>
+              <article class="evidence-card">
+                <h3>North America angle</h3>
+                <p>
+                  The first conversation should likely focus on North America, tariff/localization resilience, service
+                  footprint, and the Mexico manufacturing narrative, subject to Buhler validation.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="evidence-section" id="search-report">
+          <div class="section-shell-tight">
+            <div class="section-heading-tight">
+              <div>
+                <p class="section-label">Production search report</p>
+                <h2>The scan shows strong branded retrieval and weaker broad discovery.</h2>
+              </div>
+              <p>
+                Source: New Reward production competitive-intel capture using selected domains and query families.
+                This is supporting evidence, not the formal SalesReport score.
+              </p>
+            </div>
+
+            <div class="metric-grid" aria-label="Production scan summary metrics">
+              <div class="metric-card">
+                <span class="metric-value">48</span>
+                <span class="metric-label">Saved scan rows</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-value">8/8</span>
+                <span class="metric-label">Brand/product queries rank #1</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-value">3/8</span>
+                <span class="metric-label">Broad category queries captured</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-value">5/8</span>
+                <span class="metric-label">Broad themes not captured</span>
+              </div>
+            </div>
+
+            <div class="callout">
+              <h3>Plain-English read</h3>
+              <p>
+                Buhler is easy to retrieve when the buyer already knows the brand or product name. The opportunity is
+                making Buhler easier to retrieve when the buyer asks by category, service need, regional execution, or
+                lifecycle outcome first.
+              </p>
+            </div>
+
+            <div class="table-wrap" role="region" aria-label="Broad category scan table" tabindex="0">
+              <table class="report-table">
+                <thead>
+                  <tr>
+                    <th>Broad query</th>
+                    <th>Buhler capture</th>
+                    <th>Evidence path</th>
+                    <th>Why it matters</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>AI optical sorting food</td>
+                    <td class="rank">Rank #4</td>
+                    <td>SORTEX AI optical sorting story</td>
+                    <td>Good foothold for the AI sorting narrative, with room to improve category-level retrieval.</td>
+                  </tr>
+                  <tr>
+                    <td>Industrial food processing equipment</td>
+                    <td class="rank">Not captured</td>
+                    <td>No landing page returned</td>
+                    <td>Broad industrial discovery may not surface Buhler despite the official-domain content base.</td>
+                  </tr>
+                  <tr>
+                    <td>Pet food extrusion systems</td>
+                    <td class="rank">Rank #7</td>
+                    <td>Extrusion solutions page</td>
+                    <td>Visible but not dominant for a commercially relevant feed and pet-food category.</td>
+                  </tr>
+                  <tr>
+                    <td>Cocoa chocolate processing equipment</td>
+                    <td class="rank">Not captured</td>
+                    <td>No landing page returned</td>
+                    <td>Research says cocoa/chocolate is strategically relevant, so the missing capture is a priority gap.</td>
+                  </tr>
+                  <tr>
+                    <td>Grain milling technology</td>
+                    <td class="rank">Rank #7</td>
+                    <td>Wheat and grain page</td>
+                    <td>Core category is visible, but not strong enough to rely on without further baseline testing.</td>
+                  </tr>
+                  <tr>
+                    <td>Digital services industrial food processing</td>
+                    <td class="rank">Not captured</td>
+                    <td>No landing page returned</td>
+                    <td>Supports the thesis that service and digital support need clearer citation-ready architecture.</td>
+                  </tr>
+                  <tr>
+                    <td>Battery slurry production equipment</td>
+                    <td class="rank">Not captured</td>
+                    <td>No landing page returned</td>
+                    <td>Battery-related materials are part of the broader innovation story, but the query path is weak.</td>
+                  </tr>
+                  <tr>
+                    <td>Lifecycle service food processing equipment</td>
+                    <td class="rank">Not captured</td>
+                    <td>No landing page returned</td>
+                    <td>Directly supports a service-led pilot because lifecycle language did not retrieve Buhler.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-wrap" role="region" aria-label="Brand and product scan table" tabindex="0">
+              <table class="report-table">
+                <thead>
+                  <tr>
+                    <th>Brand/product query</th>
+                    <th>Rank</th>
+                    <th>Landing pattern</th>
+                    <th>Interpretation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Buhler Group customer service food processing</td>
+                    <td class="rank">#1</td>
+                    <td>Homepage</td>
+                    <td>Brand found, but the path is not as service-specific as the commercial story requires.</td>
+                  </tr>
+                  <tr>
+                    <td>Buhler Customer Service</td>
+                    <td class="rank">#1</td>
+                    <td>Hotline/contact page</td>
+                    <td>Strong direct service retrieval for a branded customer-service query.</td>
+                  </tr>
+                  <tr>
+                    <td>Buhler North America food processing equipment</td>
+                    <td class="rank">#1</td>
+                    <td>Homepage</td>
+                    <td>Regional brand query resolves, but the answer path is broad rather than North America-specific.</td>
+                  </tr>
+                  <tr>
+                    <td>Buhler Mexico factory food processing equipment</td>
+                    <td class="rank">#1</td>
+                    <td>Homepage</td>
+                    <td>Regional manufacturing topic needs a more specific official path and validation of timing/status.</td>
+                  </tr>
+                  <tr>
+                    <td>SORTEX AI700</td>
+                    <td class="rank">#1</td>
+                    <td>Official product page</td>
+                    <td>Strong product-level retrieval for AI sorting proof.</td>
+                  </tr>
+                  <tr>
+                    <td>Nutrex 7 Series Buhler</td>
+                    <td class="rank">#1</td>
+                    <td>Official product page</td>
+                    <td>Strong product-level retrieval for extrusion/feed and pet-food relevance.</td>
+                  </tr>
+                  <tr>
+                    <td>Buhler Insights digital services</td>
+                    <td class="rank">#1</td>
+                    <td>Official digital services page</td>
+                    <td>Strong branded digital-services retrieval; broad digital category retrieval is still weaker.</td>
+                  </tr>
+                  <tr>
+                    <td>OptiBake Buhler</td>
+                    <td class="rank">#1</td>
+                    <td>Official product page</td>
+                    <td>Strong product-level retrieval for current launch/product proof.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="evidence-section" id="integrated-work">
+          <div class="section-shell-tight">
+            <div class="section-heading-tight">
+              <div>
+                <p class="section-label">Integrated workstream</p>
+                <h2>How all of the work rolls up into this page.</h2>
+              </div>
+              <p>
+                This Pages packet is the review surface for the separate Rick Johnson / Buhler project. It pulls
+                together the research, scan, Gamma presentation, discrepancy review, and outreach recommendation.
+              </p>
+            </div>
+
+            <div class="workstream-grid">
+              <article class="workstream-card">
+                <span class="workstream-number">1</span>
+                <h3>Firm research</h3>
+                <p>
+                  Accepted research runs established the company posture, service-led strategy, North America angle,
+                  product signals, category opportunities, and claims to avoid.
+                </p>
+              </article>
+              <article class="workstream-card">
+                <span class="workstream-number">2</span>
+                <h3>Production scan</h3>
+                <p>
+                  New Reward production competitive-intel capture supplied the search evidence: 48 saved rows,
+                  strong brand/product retrieval, and uneven broad category/service discovery.
+                </p>
+              </article>
+              <article class="workstream-card">
+                <span class="workstream-number">3</span>
+                <h3>Discrepancy review</h3>
+                <p>
+                  The diagnostic review separated confirmed search evidence from the blocked formal SalesReport path,
+                  so the deck does not overclaim a score or completed report.
+                </p>
+              </article>
+              <article class="workstream-card">
+                <span class="workstream-number">4</span>
+                <h3>Gamma presentation</h3>
+                <p>
+                  The approved Gamma result is embedded at the top of this page, while the source sections underneath
+                  explain why each client-facing claim was written.
+                </p>
+              </article>
+              <article class="workstream-card">
+                <span class="workstream-number">5</span>
+                <h3>Recommendation</h3>
+                <p>
+                  The recommended motion is a 30-minute validation meeting, followed by a 20-30 prompt AI visibility
+                  baseline and a prioritized source/citation fix plan.
+                </p>
+              </article>
+              <article class="workstream-card">
+                <span class="workstream-number">6</span>
+                <h3>Delivery boundary</h3>
+                <p>
+                  This is the dedicated Rick Johnson / Buhler Group review package. It keeps the client-facing
+                  evidence separate from internal execution notes and production-system diagnostics.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="evidence-section" id="conclusions">
+          <div class="section-shell-tight">
+            <div class="section-heading-tight">
+              <div>
+                <p class="section-label">Conclusions and recommendation</p>
+                <h2>What we think this means, and why the deck asks for a meeting.</h2>
+              </div>
+              <p>
+                The data supports a focused AI-answer visibility baseline. It does not support a broad scare-based SEO
+                pitch or a formal score claim yet.
+              </p>
+            </div>
+
+            <div class="conclusion-grid">
+              <article class="conclusion-card">
+                <h3>Conclusion 1: strong known-brand retrieval</h3>
+                <p>
+                  Named product and brand-assisted queries are working. That is why the deck does not position Buhler
+                  as invisible or failing.
+                </p>
+              </article>
+              <article class="conclusion-card">
+                <h3>Conclusion 2: broad discovery is uneven</h3>
+                <p>
+                  Category, service, digital, lifecycle, and some regional narratives are less consistently captured.
+                  That is the real opportunity.
+                </p>
+              </article>
+              <article class="conclusion-card">
+                <h3>Conclusion 3: service architecture matters</h3>
+                <p>
+                  Research says service and digital lifecycle support are strategic. Search results do not yet make
+                  that story reliably easy to retrieve from broad prompts.
+                </p>
+              </article>
+              <article class="conclusion-card">
+                <h3>Recommendation: validate, then baseline</h3>
+                <p>
+                  Use the deck to confirm priorities with Buhler, then run 20-30 validated prompts and return a
+                  prioritized source/citation fix plan.
+                </p>
+              </article>
+            </div>
+
+            <div class="callout">
+              <h3>What to verify with Buhler</h3>
+              <p>
+                Confirm the correct North America lens, the most valuable category priorities, Mexico manufacturing
+                timing/status, official source ownership, and whether service/digital/lifecycle positioning should lead
+                the first pilot.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="evidence-section" id="sources">
+          <div class="section-shell-tight">
+            <div class="section-heading-tight">
+              <div>
+                <p class="section-label">Source and evidence map</p>
+                <h2>Where the claims came from.</h2>
+              </div>
+              <p>
+                This section is included so reviewers can trace the deck claims back to official sources, accepted
+                research outputs, and production scan artifacts.
+              </p>
+            </div>
+
+            <div class="source-grid">
+              <article class="source-card">
+                <h3>Official Buhler sources</h3>
+                <ul class="link-list">
+                  <li><a href="https://annualreport.buhlergroup.com/reports/en_25/home.html" target="_blank" rel="noopener">Annual Report 2025 home</a></li>
+                  <li><a href="https://annualreport.buhlergroup.com/reports/en_25/home/economy/group-report.html" target="_blank" rel="noopener">2025 Group Report</a></li>
+                  <li><a href="https://annualreport.buhlergroup.com/reports/en_25/home/group/our-strategy.html" target="_blank" rel="noopener">2025 Strategy page</a></li>
+                  <li><a href="https://annualreport.buhlergroup.com/reports/en_25/home/group/value-creation-model.html" target="_blank" rel="noopener">Value creation model</a></li>
+                  <li><a href="https://www.buhlergroup.com/content/buhlergroup/global/en/media/media-releases/sortex-ai700.html" target="_blank" rel="noopener">SORTEX AI700 release</a></li>
+                  <li><a href="https://www.buhlergroup.com/global/en/media/media-releases/buehler-breaks-ground-on-a-new-manufacturing-facility-in-mexico-.html" target="_blank" rel="noopener">Mexico manufacturing facility release</a></li>
+                </ul>
+              </article>
+
+              <article class="source-card">
+                <h3>Local research and scan artifacts</h3>
+                <ul class="tight-list">
+                  <li>Accepted Deep Research Run 01: financials, ownership, strategy, management priorities.</li>
+                  <li>Accepted Deep Research Run 02: market context, products, growth pockets, competitors.</li>
+                  <li>Accepted Deep Research Run 03: AI visibility thesis, outreach plan, and prompt set.</li>
+                  <li>Production competitive-intel scan: 40 saved category/domain rows.</li>
+                  <li>Production brand/narrative scan: 8 saved Buhler-specific rows.</li>
+                  <li>Diagnostic discrepancy review comparing scan data against the research thesis.</li>
+                </ul>
+              </article>
+            </div>
+
+            <div class="callout">
+              <h3>Boundary for sending</h3>
+              <p>
+                The Gamma deck can be used for a warm-intro review. Do not call it a completed formal New Reward
+                SalesReport or attach a formal score until the report export path is cleared and re-run.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer-note">
+        Prepared by New Reward. Review packet built from source-backed research and production scan evidence. Noindex.
+      </footer>
+    </div>
+  </body>
+</html>
